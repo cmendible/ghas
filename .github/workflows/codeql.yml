@@ -93,12 +93,12 @@ jobs:
         path: ${{ steps.codeql_analysis.outputs.sarif-output }}
 
     - name: Psalm Security Scan
-        uses: docker://ghcr.io/austenstone/psalm-security-scan
-        env:
-          INPUT_WORKING_DIR: ./php
-          
-      - name: Upload Security Analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ./php/results.sarif
-          category: Yaml
+      uses: docker://ghcr.io/austenstone/psalm-security-scan
+      env:
+        INPUT_WORKING_DIR: ./php
+        
+    - name: Upload Security Analysis results to GitHub
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: ./php/results.sarif
+        category: Yaml
