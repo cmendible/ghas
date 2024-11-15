@@ -43,8 +43,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'csharp' ]
-        build-mode: autobuild
+        include:
+          # Analyze C#
+          - language: csharp
+            build-mode: autobuild
     
     steps:
     - name: Checkout repository
